@@ -22,8 +22,10 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.common.api.Status;
 
 import java.io.InputStream;
 
@@ -89,7 +91,7 @@ public class Splash extends ActionBarActivity implements View.OnClickListener,
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this).addApi(Plus.API, null)
+                .addOnConnectionFailedListener(this).addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN).build();
     }
 
@@ -250,15 +252,33 @@ public class Splash extends ActionBarActivity implements View.OnClickListener,
 //            bmImage.setImageBitmap(result);
         }
     }
-//    /**
-//     * Sign-out from google
-//     * */
+    /**
+     * Sign-out from google
+     * */
 //    private void signOutFromGplus() {
 //        if (mGoogleApiClient.isConnected()) {
 //            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
 //            mGoogleApiClient.disconnect();
 //            mGoogleApiClient.connect();
 //            updateUI(false);
+//        }
+//    }
+    /**
+     * Revoking access from google
+     * */
+//    private void revokeGplusAccess() {
+//        if (mGoogleApiClient.isConnected()) {
+//            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+//            Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
+//                    .setResultCallback(new ResultCallback<Status>() {
+//                        @Override
+//                        public void onResult(Status arg0) {
+//                            Log.e("Splash", "User access revoked!");
+//                            mGoogleApiClient.connect();
+//                            updateUI(false);
+//                        }
+//
+//                    });
 //        }
 //    }
 }
