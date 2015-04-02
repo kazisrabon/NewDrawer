@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
                     .withActivity(this)
                     .withHeaderBackground(R.drawable.header)
                     .addProfiles(
-                            new ProfileDrawerItem().withName(Splash.personName).withEmail(Splash.email).withIcon(getResources().getDrawable(R.drawable.profile))
+                            new ProfileDrawerItem().withName("").withEmail("").withIcon(getResources().getDrawable(R.drawable.profile4))
                     )
                     .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                         @Override

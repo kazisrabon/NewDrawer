@@ -33,7 +33,7 @@ import java.io.InputStream;
  * Created by BS-36 on 4/2/2015.
  */
 public class Splash extends ActionBarActivity implements View.OnClickListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     Animation animBlink;
     ImageView imageStar;
     RelativeLayout relativeLayout;
@@ -57,6 +57,7 @@ public class Splash extends ActionBarActivity implements View.OnClickListener,
         setContentView(R.layout.splash);
 
         btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
+        btnSignIn.setOnClickListener(this);
         relativeLayout = (RelativeLayout)findViewById(R.id.fullPage);
         relativeLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
