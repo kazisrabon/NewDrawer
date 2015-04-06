@@ -20,7 +20,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
@@ -80,10 +79,11 @@ public class MainActivity extends ActionBarActivity {
                 .withHeader(R.layout.header)
                 .withAccountHeader(headerResult)
                 .withToolbar(toolbar)
+                .withSliderBackgroundColor(R.color.black)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withIdentifier(1),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye).withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad).withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye).withIdentifier(3),
                         new SectionDrawerItem().withName(R.string.drawer_item_section_header),
                         new SecondaryDrawerItem().withName(R.string.drawer_item_settings).withIcon(FontAwesome.Icon.faw_cog),
                         new SecondaryDrawerItem().withName(R.string.drawer_item_help).withIcon(FontAwesome.Icon.faw_question).setEnabled(false),
@@ -114,9 +114,10 @@ public class MainActivity extends ActionBarActivity {
                                 Fragment f = DemoFragment.newInstance(getResources().getString(((Nameable) drawerItem).getNameRes()));
                                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
                             }else if (drawerItem.getIdentifier() == 2) {
-//                                Fragment f = DemoFragment.newInstance(getResources().getString(((Nameable) drawerItem).getNameRes()));
-//                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
-//                                startActivity(new Intent(getBaseContext(), Splash.class));
+                                Fragment f = GraphFragment.newInstance(getResources().getString(((Nameable) drawerItem).getNameRes()));
+                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
+                            }else if (drawerItem.getIdentifier() == 3) {
+                                Toast.makeText(MainActivity.this, " Nothing :D", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
